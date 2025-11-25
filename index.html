@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abogados Aveiro - Asesoría Jurídica Amparo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A961;
+            --dark: #1a1a1a;
+            --charcoal: #2d2d2d;
+            --light: #f8f7f4;
+            --accent: #8B7355;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(201, 169, 97, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 115, 85, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .pillar-icon {
+            font-size: 60px;
+            color: var(--gold);
+        }
+
+        .logo-text {
+            text-align: left;
+        }
+
+        .logo-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--gold);
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            font-weight: 600;
+            margin: 30px 0;
+            letter-spacing: 2px;
+            color: var(--gold);
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-top: 20px;
+            animation: fadeInUp 1.6s ease-out;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            color: var(--gold);
+            font-size: 32px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 5%;
+            background: var(--light);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 20px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 50px 40px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 5%;
+            background: var(--charcoal);
+            color: white;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            border: 3px solid var(--gold);
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), transparent);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 120px 5%;
+            background: white;
+            position: relative;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 40px;
+            border-left: 4px solid var(--gold);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .testimonial-author strong {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .testimonial-author span {
+            font-size: 13px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 5%;
+            background: var(--light);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            color: var(--gold);
+            min-width: 40px;
+        }
+
+        .contact-details h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .contact-details p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--gold);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 50px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e5e5e5;
+            background: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: var(--dark);
+            color: white;
+            padding: 18px 50px;
+            border: 2px solid var(--dark);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: var(--dark);
+            border-color: var(--gold);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--gold);
+            font-size: 28px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #999;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-text h1 {
+                font-size: 32px;
+            }
+
+            .tagline {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <div class="pillar-icon">⚖</div>
+                <div class="logo-text">
+                    <h1>ABOGADOS<br>AVEIRO</h1>
+                </div>
+            </div>
+            <div class="tagline">Asesoría Jurídica Amparo</div>
+            <div class="subtitle">Experiencia • Integridad • Resultados</div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">⚖</div>
+                <h3>Amparo Directo e Indirecto</h3>
+                <p>Protección constitucional de sus derechos fundamentales ante cualquier acto de autoridad que los vulnere.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Amparo contra Orden de Aprensión</h3>
+                <p>Defensa especializada en casos de órdenes de aprehensión, garantizando sus derechos procesales.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Amparo contra Desalojo</h3>
+                <p>Protección de su patrimonio y derechos de propiedad ante procedimientos de desalojo.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔓</div>
+                <h3>Amparo contra Prisión Preventiva</h3>
+                <p>Defensa de su derecho a la libertad personal y representación en procesos penales.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏛</div>
+                <h3>Amparo Administrativo</h3>
+                <p>Asesoría en controversias con autoridades administrativas y trámites gubernamentales.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚖️</div>
+                <h3>Amparo Penal</h3>
+                <p>Representación legal especializada en todas las etapas del proceso penal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="nosotros">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Compromiso con la Justicia</h2>
+                <p>En Abogados Aveiro, nos especializamos en brindar asesoría jurídica integral con un enfoque particular en procedimientos de amparo.</p>
+                <p>Nuestro equipo de profesionales cuenta con amplia experiencia en la defensa de los derechos constitucionales de nuestros clientes, ofreciendo un servicio personalizado y de excelencia.</p>
+                <p>Nos caracterizamos por nuestro compromiso, profesionalismo y dedicación en cada caso que asumimos.</p>
+            </div>
+            <div class="about-image">
+                <!-- Decorative element representing justice -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonios">
+        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Gracias al Despacho Aveiro gracias a la Licenciada Raquel, al Licenciado Javier su trabajo es excelente. En la primera audiencia se aclaró todo demostrando su trabajo, precios accesibles y muy pacientes en todo. Dios los bendiga y cuide los recomiendo al 100%"</p>
+                <div class="testimonial-author">
+                    <strong>Jessica Nieves Márquez Espino</strong>
+                    <span>Hace 1 mes</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Excelente experiencia en este despacho. Desde el primer contacto, el trato es profesional, claro y muy amable. Los licenciados brindaron asesoría personalizada, resolvieron todas mis dudas y siempre se mostraron disponibles para dar seguimiento. Se nota el compromiso y la experiencia del equipo. Recomiendo ampliamente sus servicios a quienes busquen atención confiable y de calidad."</p>
+                <div class="testimonial-author">
+                    <strong>Javier Hernandez</strong>
+                    <span>Hace 7 meses</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Excelente atención por parte del Lic. Javier Gómez y la Lic. Raquel Rivas, precios accesibles y el trato es muy cordial y respetuoso."</p>
+                <div class="testimonial-author">
+                    <strong>Arturo Martinez</strong>
+                    <span>Hace 5 meses</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Son abogados de una excelente reputación, amables y comprensivos. Me ayudaron con mi proceso de divorcio, aclarando todas mis dudas y siendo muy sinceros con los términos de este, personas confiables clientes felices."</p>
+                <div class="testimonial-author">
+                    <strong>Ximena Palacios</strong>
+                    <span>Hace 1 año</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="section-title">Contáctanos</div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Estamos a tu disposición</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h3>Teléfonos</h3>
+                        <p><a href="tel:5544544296">55 4454 4296</a></p>
+                        <p><a href="tel:5611148532">56 1114 8532</a></p>
+                        <p><a href="tel:5633289667">56 3328 9667</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Ubicación</h3>
+                        <p>Calz. La viga #9<br>Col. Esperanza<br>Ciudad de México</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🎵</div>
+                    <div class="contact-details">
+                        <h3>TikTok</h3>
+                        <p><a href="https://www.tiktok.com/@despacho.legal.av" target="_blank">@despacho.legal.av</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Enviar Consulta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank" title="Facebook">f</a>
+                <a href="https://www.tiktok.com/@despacho.legal.av" target="_blank" title="TikTok">♪</a>
+            </div>
+            <p>&copy; 2024 Abogados Aveiro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler - Send to WhatsApp
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `*Nueva Consulta desde la Web*%0A%0A*Nombre:* ${encodeURIComponent(nombre)}%0A*Email:* ${encodeURIComponent(email)}%0A*Teléfono:* ${encodeURIComponent(telefono)}%0A*Mensaje:* ${encodeURIComponent(mensaje)}`;
+            
+            // WhatsApp number (remove spaces and special characters)
+            const whatsappNumber = '5254544296';
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
